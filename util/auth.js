@@ -15,18 +15,19 @@ async function authenticate(mode, email, password) {
     returnSecureToken: true,
   });
 
-  console.log(response.data);
+  const token = response.data.idToken;
+  return token;
 }
 
-export async function createUser(email, password) {
+export function createUser(email, password) {
   //   const response = await axios.post(`${createURL}`, {
   //     email: email,
   //     password: password,
   //     returnSecureToken: true,
   //   });
-  await authenticate("signUp", email, password);
+  return authenticate("signUp", email, password);
 }
 
-export async function Login(email, password) {
-  await authenticate("signInWithPassword", email, password);
+export function Login(email, password) {
+  return authenticate("signInWithPassword", email, password);
 }
